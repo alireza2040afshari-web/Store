@@ -17,9 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf import settings
-from store.templates.store import homeView
+from selling.views import homeView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',homeView),
+    path('',homeView)
 ]
