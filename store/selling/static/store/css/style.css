@@ -1,3 +1,5 @@
+/* General */
+
 * {
     box-sizing: border-box;
 }
@@ -7,7 +9,10 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f1f5ed;
     color: #26372b;
+    transition: background-color 0.3s, color 0.3s;
 }
+
+/* Header */
 
 header {
     background-color: #203c2b;
@@ -16,6 +21,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 header h1 {
@@ -23,35 +29,51 @@ header h1 {
     font-size: 26px;
 }
 
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 nav a {
     color: #e1ebdc;
     text-decoration: none;
-    margin-left: 20px;
 }
 
 nav a:hover {
     color: #9bc78b;
 }
 
+/* Theme Button */
+
+#theme-toggle {
+    padding: 10px 16px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: white;
+    color: #222;
+}
+
+#theme-toggle:hover {
+    background-color: #e8e8e8;
+}
+
+/* Hero Section */
+
 .hero {
     text-align: center;
     padding: 100px 20px;
-    background: linear-gradient(
-        135deg,
-        #dcebd4,
-        #a9c9a0,
-        #d7e8e8
-    );
+    transition: background 0.3s, color 0.3s;
 }
 
 .hero h2 {
     font-size: 38px;
-    color: #203c2b;
     margin-bottom: 15px;
 }
 
 .hero p {
-    color: #405b48;
     font-size: 18px;
     line-height: 1.8;
 }
@@ -71,13 +93,14 @@ nav a:hover {
     background-color: #203c2b;
 }
 
+/* Products */
+
 .products {
     padding: 50px 20px;
     text-align: center;
 }
 
 .products h2 {
-    color: #284b33;
     margin-bottom: 30px;
     font-size: 28px;
 }
@@ -96,7 +119,7 @@ nav a:hover {
     border-radius: 10px;
     border: 1px solid #dce6d7;
     box-shadow: 0 4px 12px rgba(40, 75, 51, 0.08);
-    transition: transform 0.3s;
+    transition: transform 0.3s, background-color 0.3s, color 0.3s;
 }
 
 .product:hover {
@@ -104,14 +127,14 @@ nav a:hover {
 }
 
 .product h3 {
-    color: #315d3b;
     margin-top: 0;
 }
 
 .product p {
-    color: #68766b;
     line-height: 1.8;
 }
+
+/* Footer */
 
 footer {
     background-color: #203c2b;
@@ -119,21 +142,121 @@ footer {
     text-align: center;
     padding: 22px;
     margin-top: 30px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 footer p {
     margin: 0;
 }
 
-@media (max-width: 600px) {
-    header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px;
-    }
+/* Nature Theme */
 
-    nav a {
-        margin: 0 8px;
+body.nature-theme {
+    background-color: #f1f5ed;
+    color: #26372b;
+}
+
+body.nature-theme header,
+body.nature-theme footer {
+    background-color: #203c2b;
+    color: white;
+}
+
+body.nature-theme .hero {
+    background:
+        linear-gradient(
+            rgba(20, 45, 30, 0.45),
+            rgba(20, 45, 30, 0.65)
+        ),
+        url("../images/nature.jpg") center 55% / cover no-repeat;
+
+    color: white;
+}
+
+body.nature-theme .hero h2,
+body.nature-theme .hero p {
+    color: white;
+}
+
+body.nature-theme .products h2 {
+    color: #284b33;
+}
+
+body.nature-theme .product h3 {
+    color: #315d3b;
+}
+
+body.nature-theme .product p {
+    color: #68766b;
+}
+
+/* Simple Theme */
+
+body.simple-theme {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+body.simple-theme header,
+body.simple-theme footer {
+    background-color: #222;
+    color: white;
+}
+
+body.simple-theme nav a {
+    color: #eee;
+}
+
+body.simple-theme nav a:hover {
+    color: #bbb;
+}
+
+body.simple-theme .hero {
+    background: white;
+    color: #333;
+}
+
+body.simple-theme .hero h2 {
+    color: #333;
+}
+
+body.simple-theme .hero p {
+    color: #666;
+}
+
+body.simple-theme .hero a {
+    background-color: #333;
+}
+
+body.simple-theme .hero a:hover {
+    background-color: #555;
+}
+
+body.simple-theme .products h2 {
+    color: #333;
+}
+
+body.simple-theme .product {
+    background-color: white;
+    border-color: #ddd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body.simple-theme .product h3 {
+    color: #333;
+}
+
+body.simple-theme .product p {
+    color: #666;
+}
+
+/* Responsive Design */
+
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
     }
 
     .hero {
@@ -148,4 +271,3 @@ footer p {
         width: 100%;
         max-width: 350px;
     }
-}

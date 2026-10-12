@@ -1,28 +1,18 @@
 {% load static %}
 
-<head>
-    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
-</head>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% comment %} <link rel="stylesheet" href="/static/ticketing/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/ticketing/css/style.css"> {% endcomment %}
-    <link rel="stylesheet" href="{% static "store/css/bootstrap.css" %}">
-    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
-   
-    <title> </title>
-</head>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Online Store</title>
+
+    <link rel="stylesheet" href="{% static 'store/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
 </head>
-<body>
+
+<body class="nature-theme">
 
     <header>
         <h1>Online Store</h1>
@@ -30,13 +20,21 @@
         <nav>
             <a href="/">Home</a>
             <a href="#products">Products</a>
+
+            <button id="theme-toggle" type="button">
+                Simple Theme
+            </button>
         </nav>
     </header>
 
     <main>
         <section class="hero">
             <h2>Welcome to Online Store</h2>
-            <p>Discover our products and find what you need.</p>
+
+            <p>
+                Discover our products and find what you need.
+            </p>
+
             <a href="#products">Explore Products</a>
         </section>
 
@@ -44,6 +42,7 @@
             <h2>Our Products</h2>
 
             <div class="product-list">
+
                 <div class="product">
                     <h3>Product One</h3>
                     <p>Product description will appear here.</p>
@@ -58,6 +57,7 @@
                     <h3>Product Three</h3>
                     <p>Product description will appear here.</p>
                 </div>
+
             </div>
         </section>
     </main>
@@ -65,6 +65,8 @@
     <footer>
         <p>&copy; 2026 Online Store. All rights reserved.</p>
     </footer>
+
+    <script src="{% static 'store/js/them.js' %}"></script>
 
 </body>
 </html>
