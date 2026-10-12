@@ -4,6 +4,67 @@
     <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
 </head>
 
-<p class="goge">
-    hey
-</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <link rel="stylesheet" href="/static/ticketing/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/ticketing/css/style.css"> {% endcomment %}
+    <link rel="stylesheet" href="{% static "store/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+   
+    <title> </title>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+</head>
+<body>
+
+    <header>
+        <h1>Online Store</h1>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="#products">Products</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Welcome to Online Store</h2>
+            <p>Discover our products and find what you need.</p>
+            <a href="#products">Explore Products</a>
+        </section>
+
+        <section class="products" id="products">
+            <h2>Our Products</h2>
+
+            <div class="product-list">
+                <div class="product">
+                    <h3>Product One</h3>
+                    <p>Product description will appear here.</p>
+                </div>
+
+                <div class="product">
+                    <h3>Product Two</h3>
+                    <p>Product description will appear here.</p>
+                </div>
+
+                <div class="product">
+                    <h3>Product Three</h3>
+                    <p>Product description will appear here.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Online Store. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
