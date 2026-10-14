@@ -271,3 +271,7 @@ body.simple-theme .product p {
         width: 100%;
         max-width: 350px;
     }
+
+.warning {
+    color: crimson;
+}

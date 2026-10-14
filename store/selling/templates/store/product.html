@@ -1,3 +1,7 @@
+{% load static %}
+    <link rel="stylesheet" href="{% static 'store/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+ 
 <section class="products" id="products">
     <h2>Our Products</h2>
 
@@ -6,26 +10,22 @@
         {% for product in products %}
 
             <div class="product">
-
-                <h3>{{ product.name }}</h3>
-
-                <p>{{ product.factory }}</p>
-
-                <p>{{ product.origin }}</p>
-
-                <p>{{ product.description }}</p>
-
                 {% if product.poster %}
-                    <img src="{{ product.poster.url }}"
-                         alt="{{ product.name }}"
-                         width="200">
+                     <img src="{{ product.poster.url }}" alt="{{ product.name }}" width="200">
                 {% endif %}
 
+                <h3>product : {{ product.name }}</h3>
+
+                <p>brand : {{ product.factory }}</p>
+
+                <p>origin : {{ product.origin }}</p>
+
+                <p>describtions : {{ product.description }}</p>
             </div>
 
         {% empty %}
 
-            <p>No products available.</p>
+            <p class="warning">No products available.</p>
 
         {% endfor %}
 
