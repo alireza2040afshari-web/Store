@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Online Store{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'store/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+</head>
+
+<body class="nature-theme">
+
+    <header>
+        <h1>Online Store</h1>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="{% url 'products' %}">Products</a>
+
+            <button id="theme-toggle" type="button">
+                Simple Theme
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Online Store. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'store/js/them.js' %}"></script>
+
+</body>
+</html>

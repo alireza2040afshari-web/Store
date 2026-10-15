@@ -1,8 +1,11 @@
-{% load static %}
-    <link rel="stylesheet" href="{% static 'store/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
- 
+{% extends 'store/base.html' %}
+
+{% block title %}Products | Online Store{% endblock %}
+
+{% block content %}
+
 <section class="products" id="products">
+
     <h2>Our Products</h2>
 
     <div class="product-list">
@@ -10,17 +13,33 @@
         {% for product in products %}
 
             <div class="product">
+
                 {% if product.poster %}
-                     <img src="{{ product.poster.url }}" alt="{{ product.name }}" width="200">
+                    <img
+                        src="{{ product.poster.url }}"
+                        alt="{{ product.name }}"
+                        width="200"
+                    >
                 {% endif %}
 
-                <h3>product : {{ product.name }}</h3>
+                <h3>Product: {{ product.name }}</h3>
 
-                <p>brand : {{ product.factory }}</p>
+                <p>Brand: {{ product.factory }}</p>
 
-                <p>origin : {{ product.origin }}</p>
+                <p>Origin: {{ product.origin }}</p>
 
-                <p>describtions : {{ product.description }}</p>
+                {% for price in product.pricemodel_set.all %}
+
+                    <h3>Price: {{ price.price }}</h3>
+
+                    <p>Discount: {{ price.discount }}%</p>
+
+                {% empty %}
+
+                    <p class="warning">No price available.</p>
+
+                {% endfor %}
+
             </div>
 
         {% empty %}
@@ -30,4 +49,7 @@
         {% endfor %}
 
     </div>
+
 </section>
+
+{% endblock %}

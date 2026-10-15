@@ -1,72 +1,40 @@
-{% load static %}
+{% extends 'store/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}Home | Online Store{% endblock %}
 
-    <title>Online Store</title>
+{% block content %}
 
-    <link rel="stylesheet" href="{% static 'store/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
-</head>
+<section class="hero">
+    <h2>Welcome to Online Store</h2>
 
-<body class="nature-theme">
+    <p>
+        Discover our products and find what you need.
+    </p>
 
-    <header>
-        <h1>Online Store</h1>
+    <a href="{% url 'products' %}">Explore Products</a>
+</section>
 
-        <nav>
-            <a href="/">Home</a>
-            <a href="#products">Products</a>
+<section class="products" id="products">
+    <h2>Our Products</h2>
 
-            <button id="theme-toggle" type="button">
-                Simple Theme
-            </button>
-        </nav>
-    </header>
+    <div class="product-list">
 
-    <main>
-        <section class="hero">
-            <h2>Welcome to Online Store</h2>
+        <div class="product">
+            <h3>Product One</h3>
+            <p>Product description will appear here.</p>
+        </div>
 
-            <p>
-                Discover our products and find what you need.
-            </p>
+        <div class="product">
+            <h3>Product Two</h3>
+            <p>Product description will appear here.</p>
+        </div>
 
-            <a href="#products">Explore Products</a>
-        </section>
+        <div class="product">
+            <h3>Product Three</h3>
+            <p>Product description will appear here.</p>
+        </div>
 
-        <section class="products" id="products">
-            <h2>Our Products</h2>
+    </div>
+</section>
 
-            <div class="product-list">
-
-                <div class="product">
-                    <h3>Product One</h3>
-                    <p>Product description will appear here.</p>
-                </div>
-
-                <div class="product">
-                    <h3>Product Two</h3>
-                    <p>Product description will appear here.</p>
-                </div>
-
-                <div class="product">
-                    <h3>Product Three</h3>
-                    <p>Product description will appear here.</p>
-                </div>
-
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Online Store. All rights reserved.</p>
-    </footer>
-
-    <script src="{% static 'store/js/them.js' %}"></script>
-
-</body>
-</html>
+{% endblock %}
