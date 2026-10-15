@@ -106,7 +106,7 @@ nav a:hover {
 }
 
 .product-list {
-    display: flex;
+    display: flex ;
     justify-content: center;
     gap: 25px;
     flex-wrap: wrap;

@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from selling.views import homeView, productList
+from selling.views import homeView, productList, detailView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeView, name='home'),
     path('productList/', productList, name='products'),
+    path('detail/', detailView,name='details')
 ]
 
 if settings.DEBUG:
