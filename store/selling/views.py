@@ -1,16 +1,16 @@
 from django.shortcuts import render
-from .models import ProductModel
+import re
+from .models import ProductModel , PriceModel
 
-
+# Create your views here.
 def homeView(request):
     return render(request, "store/home.html")
-
 
 def productList(request):
     products = ProductModel.objects.all()
 
     return render(
         request,
-        "store/products.html",
+        "store/product.html",
         {"products": products}
     )

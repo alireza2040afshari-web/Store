@@ -24,21 +24,18 @@
 
                 <h3>Product: {{ product.name }}</h3>
 
-                <p>Brand: {{ product.factory }}</p>
-
-                <p>Origin: {{ product.origin }}</p>
-
                 {% for price in product.pricemodel_set.all %}
 
                     <h3>Price: {{ price.price }}</h3>
-
-                    <p>Discount: {{ price.discount }}%</p>
 
                 {% empty %}
 
                     <p class="warning">No price available.</p>
 
                 {% endfor %}
+                <p>Brand: {{ product.factory }}</p>
+
+                <p>Origin: {{ product.origin }}</p>
 
             </div>
 
