@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeView, name='home'),
     path('productList/', productList, name='products'),
-    path('detail/', detailView,name='details')
+    path('detail/<int:product_id>', detailView,name='details')
 ]
 
 if settings.DEBUG:

@@ -1,6 +1,5 @@
-from django.shortcuts import render
-import re
-from .models import ProductModel 
+from django.shortcuts import render, get_object_or_404
+from .models import ProductModel
 
 # Create your views here.
 
@@ -22,10 +21,12 @@ def homeView(request):
         {"products": products}
     )
 
-def detailView(request):
-    products = ProductModel.objects.all()
+
+def detailView(request, product_id):
+    product = get_object_or_404(ProductModel, id=product_id)
+
     return render(
         request,
         "store/detail.html",
-        {"products":products}
+        {"product": product}
     )

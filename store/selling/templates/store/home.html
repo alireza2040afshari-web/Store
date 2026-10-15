@@ -20,7 +20,6 @@
     </div>
 </section>
 
-
 <!-- Featured Products -->
 <section class="products" id="products">
 
@@ -32,25 +31,29 @@
 
             <div class="product">
 
-                {% if product.poster %}
-                    <img
-                        src="{{ product.poster.url }}"
-                        alt="{{ product.name }}"
-                        width="200"
-                    >
-                {% endif %}
+                <a href="{% url 'details' product.id %}" class="product-link">
 
-                <h3>{{ product.name }}</h3>
+                    {% if product.poster %}
+                        <img
+                            src="{{ product.poster.url }}"
+                            alt="{{ product.name }}"
+                            width="200"
+                        >
+                    {% endif %}
 
-                <p>
-                    <strong>Brand:</strong>
-                    {{ product.factory }}
-                </p>
+                    <h3>{{ product.name }}</h3>
 
-                <p>
-                    <strong>Origin:</strong>
-                    {{ product.origin }}
-                </p>
+                    <p>
+                        <strong>Brand:</strong>
+                        {{ product.factory }}
+                    </p>
+
+                    <p>
+                        <strong>Origin:</strong>
+                        {{ product.origin }}
+                    </p>
+
+                </a>
 
                 {% for price in product.pricemodel_set.all %}
 
@@ -67,6 +70,10 @@
 
                 {% endfor %}
 
+                <a href="{% url 'details' product.id %}" class="btn">
+                    View Details
+                </a>
+
             </div>
 
         {% empty %}
@@ -79,6 +86,7 @@
 
     </div>
 
+    <!-- View All Products -->
     <div class="view-all">
         <a href="{% url 'products' %}" class="btn">
             View All Products

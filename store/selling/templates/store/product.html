@@ -4,6 +4,7 @@
 
 {% block content %}
 
+<!-- Products Section -->
 <section class="products" id="products">
 
     <h2>Our Products</h2>
@@ -14,34 +15,58 @@
 
             <div class="product">
 
-                {% if product.poster %}
-                    <img
-                        src="{{ product.poster.url }}"
-                        alt="{{ product.name }}"
-                        width="200"
-                    >
-                {% endif %}
+                <a href="{% url 'details' product.id %}" class="product-link">
 
-                <h3>Product: {{ product.name }}</h3>
+                    {% if product.poster %}
+                        <img
+                            src="{{ product.poster.url }}"
+                            alt="{{ product.name }}"
+                            width="200"
+                        >
+                    {% endif %}
 
+                    <h3>{{ product.name }}</h3>
+
+                    <p>
+                        <strong>Brand:</strong>
+                        {{ product.factory }}
+                    </p>
+
+                    <p>
+                        <strong>Origin:</strong>
+                        {{ product.origin }}
+                    </p>
+
+                </a>
+
+                <!-- Product Price -->
                 {% for price in product.pricemodel_set.all %}
 
-                    <h3>Price: {{ price.price }}$</h3>
+                    <p>
+                        <strong>Price:</strong>
+                        {{ price.price }}$
+                    </p>
 
                 {% empty %}
 
-                    <p class="warning">No price available.</p>
+                    <p class="warning">
+                        No price available.
+                    </p>
 
                 {% endfor %}
-                <p>Brand: {{ product.factory }}</p>
 
-                <p>Origin: {{ product.origin }}</p>
+                <!-- Product Details Button -->
+                <a href="{% url 'details' product.id %}" class="btn">
+                    View Details
+                </a>
 
             </div>
 
         {% empty %}
 
-            <p class="warning">No products available.</p>
+            <p class="warning">
+                No products available.
+            </p>
 
         {% endfor %}
 
