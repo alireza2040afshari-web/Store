@@ -1,0 +1,43 @@
+{% extends "account/layout.html" %}
+{% block title %}Login{% endblock  %}
+
+{% block main %}
+
+<div class="container">
+    <form  method="POST">
+        {% csrf_token %}
+        <p><span>{{username}}   {{errorMessage}}</span></p>
+        <div class="mb-3 mt-3">
+
+            
+             <label for="usrname"></label>
+            <input type="text" class="form-control" id="usrname"  name="username">
+ 
+        </div>
+        <div class="mb-3 mt-3">
+
+          
+             <label for="pass"></label>
+            <input type="password" class="form-control" id="pass"  name="password">
+            
+        </div>
+
+        <button type="submit" class="btn btn-primary">login</button>
+        <button type="reset" class="btn btn-warning">clear</button>
+        <button type="reset" class="btn btn-danger">Forget Password</button>
+
+
+
+
+
+    </form>
+
+
+
+
+
+</div>
+
+
+
+{% endblock %}

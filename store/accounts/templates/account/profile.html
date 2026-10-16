@@ -1,0 +1,30 @@
+{% extends "account/layout.html" %}
+{% block title %}::Profile info ::{% endblock  %}
+
+{% block main %}
+
+<div class="container mt-5">
+      <div class="card mt-5 detail" style="width: 20rem;">
+
+        <img src="{{profile.profileImage.url }}" alt="" class="card-img-top">
+        <div class="card-body">
+            <h6 class="card-title">{{date_join}}</h6>
+            <p class="card-text"> {{profile.user.first_name}} {{profile.user.last_name}}</p>
+            <p class="card-text"> {{profile.get_status_display}}</p>
+            <p class="card-text">Credit: {{profile.credit}} $</p>
+            {% comment %} <a href="{% url "event-list" %}" class="btn btn-outline btn-danger btn-wide">Back</a> {% endcomment %}
+            <div class="d-flex gap-2 mt-3">
+                <a href="/ticketing/event-list/" class="btn btn-outline btn-danger btn-wide flex-fill">Back</a>
+                <a href="{% url "account:profile-edit" %}" class="btn btn-outline btn-warning btn-wide flex-fill">Edit profile</a>
+           
+            </div>
+        </div>
+         </div>
+          </div>
+
+
+   
+
+    
+
+{% endblock %}

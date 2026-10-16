@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <link rel="stylesheet" href="{% static "/account/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "/account/css/style.css" %}">
+   
+    <title> </title>
+</head>
+<body>
+
+    <h1 class="jumbotron"> {% block title %}{% endblock  %} </h1>
+
+    <div class="container-fluid">
+        <nav class="nav mb-4 gap-2 justify-content-center mt-4">
+      
+
+
+
+
+
+        {% block  main %}
+        {% endblock  %}
+    
+        
+    </div>
+
+
+
+    
+ 
+{% comment %} <script src="/static/ticketing/js/bootstrap.js"></script> {% endcomment %}
+<script src="{% static "/selling/js/bootstrap.js" %}"></script>
+
+
+</body>
+</html>  

@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <link rel="stylesheet" href="/static/ticketing/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/ticketing/css/style.css"> {% endcomment %}
+    <link rel="stylesheet" href="{% static "/ticketing/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "/ticketing/css/style.css" %}">
+   
+    <title> </title>
+</head>
+<body>
+
+    <h1 class="jumbotron"> {% block title %}{% endblock  %} </h1>
+
+    <div class="container-fluid">
+        <nav class="nav mb-4 gap-2 justify-content-center mt-4">
+            <a href="{% url "tickting:event-list" %}" class="nav-link 
+
+            {% if request.resolver_match.url_name  == 'event-list'  %}
+              active
+            {% endif %}
+
+            ">Event List</a>
+
+             <a href="{% url "tickting:time-list" %}" class="nav-link 
+
+            {% if request.resolver_match.url_name  == 'time-list'  %}
+                active
+            {% endif %}
+             
+             
+             ">Time List</a>
+
+             <a href="{% url "tickting:location-list" %}" class="nav-link 
+
+             {% if request.path == '/location-list/'  %}
+                active
+            {% endif %}
+
+             
+             
+             ">Address List</a>
+
+
+
+        </nav>
+
+
+
+
+
+
+
+        {% block  main %}
+        {% endblock  %}
+    
+        
+    </div>
+
+
+
+    
+ 
+{% comment %} <script src="/static/ticketing/js/bootstrap.js"></script> {% endcomment %}
+<script src="{% static "/ticketing/js/bootstrap.js" %}"></script>
+
+
+</body>
+</html>  

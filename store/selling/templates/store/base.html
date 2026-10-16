@@ -14,17 +14,16 @@
 
 <body class="nature-theme">
 
-    <header>
-        <h1>Online Store</h1>
+    <header class="navbar">
+    <div class="navbar-left">
+        <a href="{% url 'home' %}">Online Store</a>
+    </div>
 
-        <nav>
-            <a href="/">Home</a>
-            <a href="{% url 'products' %}">Products</a>
-
-            <button id="theme-toggle" type="button">
-                Simple Theme
-            </button>
-        </nav>
+    <nav class="navbar-right">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'products' %}">Products</a>
+        <button id="theme-toggle" type="button">Nature Theme</button>
+    </nav>
     </header>
 
     <main>
