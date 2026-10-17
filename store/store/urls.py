@@ -18,6 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from selling.views import homeView, productList, detailView
+from accounts.views import logoutView, loginView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,7 +26,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeView, name='home'),
     path('productList/', productList, name='products'),
-    path('detail/<int:product_id>', detailView,name='details')
+    path('detail/<int:product_id>', detailView,name='details'),
+    path('login/', loginView, name='login'),
+    path('logout/', logoutView, name='logout'),
 ]
 
 if settings.DEBUG:
