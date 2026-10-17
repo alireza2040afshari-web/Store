@@ -1,40 +1,42 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-    <link rel="stylesheet" href="{% static "/account/css/bootstrap.css" %}">
-    <link rel="stylesheet" href="{% static "/account/css/style.css" %}">
-   
-    <title> </title>
+
+    <title>{% block title %}Online Store{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'account/css/style.css' %}">
 </head>
-<body>
 
-    <h1 class="jumbotron"> {% block title %}{% endblock  %} </h1>
+<body class="account-layout">
 
-    <div class="container-fluid">
-        <nav class="nav mb-4 gap-2 justify-content-center mt-4">
-      
+    <header class="account-header">
+        <a class="account-logo" href="{% url 'home' %}">
+            Online Store
+        </a>
 
+        <nav class="account-navigation">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'products' %}">Products</a>
 
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </nav>
+    </header>
 
+    <main class="account-main">
+        {% block main %}{% endblock %}
+    </main>
 
-
-        {% block  main %}
-        {% endblock  %}
-    
-        
-    </div>
-
-
-
-    
- 
-{% comment %} <script src="/static/ticketing/js/bootstrap.js"></script> {% endcomment %}
-<script src="{% static "/selling/js/bootstrap.js" %}"></script>
-
+    <footer class="account-footer">
+        <p>&copy; 2026 Online Store. All rights reserved.</p>
+    </footer>
 
 </body>
-</html>  
+</html>

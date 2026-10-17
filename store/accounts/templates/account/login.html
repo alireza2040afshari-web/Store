@@ -1,43 +1,57 @@
-{% extends "account/layout.html" %}
-{% block title %}Login{% endblock  %}
+{% extends 'store/base.html' %}
 
-{% block main %}
+{% block title %}Login | Online Store{% endblock %}
 
-<div class="container">
-    <form  method="POST">
-        {% csrf_token %}
-        <p><span>{{username}}   {{errorMessage}}</span></p>
-        <div class="mb-3 mt-3">
+{% block content %}
 
-            
-             <label for="usrname"></label>
-            <input type="text" class="form-control" id="usrname"  name="username">
- 
-        </div>
-        <div class="mb-3 mt-3">
+<section class="login-section">
 
-          
-             <label for="pass"></label>
-            <input type="password" class="form-control" id="pass"  name="password">
-            
-        </div>
+    <div class="login-card">
 
-        <button type="submit" class="btn btn-primary">login</button>
-        <button type="reset" class="btn btn-warning">clear</button>
-        <button type="reset" class="btn btn-danger">Forget Password</button>
+        <h1>Welcome Back</h1>
+        <p class="login-subtitle">
+            Login to your Online Store account
+        </p>
 
+        {% if errorMessage %}
+            <p class="login-error">{{ errorMessage }}</p>
+        {% endif %}
 
+        <form method="POST">
+            {% csrf_token %}
 
+            <div class="login-field">
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value="{{ username|default:'' }}"
+                    placeholder="Enter your username"
+                    required
+                >
+            </div>
 
+            <div class="login-field">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+            </div>
 
-    </form>
+            <button type="submit" class="login-button">
+                Login
+            </button>
+        </form>
 
+        <p class="login-footer">Welcome to Online Store</p>
 
+    </div>
 
-
-
-</div>
-
-
+</section>
 
 {% endblock %}
