@@ -24,3 +24,12 @@ class StockModel (models.Model):
 
     def __str__(self):
         return str(self.stock)
+
+
+class NewsModel (models.Model):
+    poster = models.ImageField(upload_to='productImage/', null=True)
+    name = models.CharField( max_length=50)
+    description = models.TextField(max_length=250)
+
+    def __str__(self):
+            return self.name
