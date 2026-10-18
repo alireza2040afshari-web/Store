@@ -1,30 +1,56 @@
-{% extends "account/layout.html" %}
-{% block title %}::Profile info ::{% endblock  %}
+{% extends 'store/base.html' %}
 
-{% block main %}
+{% block title %}My Profile | Online Store{% endblock %}
 
-<div class="container mt-5">
-      <div class="card mt-5 detail" style="width: 20rem;">
+{% block content %}
 
-        <img src="{{profile.profileImage.url }}" alt="" class="card-img-top">
-        <div class="card-body">
-            <h6 class="card-title">{{date_join}}</h6>
-            <p class="card-text"> {{profile.user.first_name}} {{profile.user.last_name}}</p>
-            <p class="card-text"> {{profile.get_status_display}}</p>
-            <p class="card-text">Credit: {{profile.credit}} $</p>
-            {% comment %} <a href="{% url "event-list" %}" class="btn btn-outline btn-danger btn-wide">Back</a> {% endcomment %}
-            <div class="d-flex gap-2 mt-3">
-                <a href="/ticketing/event-list/" class="btn btn-outline btn-danger btn-wide flex-fill">Back</a>
-                <a href="{% url "account:profile-edit" %}" class="btn btn-outline btn-warning btn-wide flex-fill">Edit profile</a>
-           
-            </div>
+<section class="profile-section">
+    <div class="profile-card">
+
+        <h1>My Profile</h1>
+
+        {% if profile.profileImage %}
+            <img
+                src="{{ profile.profileImage.url }}"
+                alt="Profile Photo"
+                class="profile-image"
+            >
+        {% else %}
+            <div class="profile-placeholder">No Photo</div>
+        {% endif %}
+
+        <div class="profile-info">
+            <p>
+                <strong>Username:</strong>
+                {{ request.user.username }}
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                {{ request.user.email|default:"Not provided" }}
+            </p>
+
+            <p>
+                <strong>Gender:</strong>
+                {{ profile.get_status_display }}
+            </p>
+
+            <p>
+                <strong>Account Created:</strong>
+                {{ date_join }}
+            </p>
+
+            <p>
+                <strong>Credit:</strong>
+                {{ profile.credit }}
+            </p>
         </div>
-         </div>
-          </div>
 
+        <a href="{% url 'home' %}" class="profile-button">
+            Back to Home
+        </a>
 
-   
-
-    
+    </div>
+</section>
 
 {% endblock %}

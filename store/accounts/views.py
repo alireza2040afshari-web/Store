@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from accounts.models import ProfileModel
 
 
 def loginView(request):
@@ -43,3 +45,13 @@ def loginView(request):
 def logoutView(request):
     logout(request)
     return redirect("home")
+
+
+@login_required
+def profileView(request):
+    profile = request.user.profile
+    context = {
+        "profile" : profile,
+        "date_join" : request.user.date_joined.strftime("%Y-%m-%d")
+    }
+    return render(request,'account/profile.html',context)

@@ -18,7 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from selling.views import homeView, productList, detailView
-from accounts.views import logoutView, loginView
+from accounts.views import logoutView, loginView, profileView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -29,7 +29,8 @@ urlpatterns = [
     path('detail/<int:product_id>', detailView,name='details'),
     path('login/', loginView, name='login'),
     path('logout/', logoutView, name='logout'),
-]
+    path('accounts/profile/', profileView, name='profile'),
+    ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
