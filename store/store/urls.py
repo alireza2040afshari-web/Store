@@ -21,6 +21,7 @@ from selling.views import homeView, productList, detailView
 from accounts.views import logoutView, loginView, profileView
 from django.conf import settings
 from django.conf.urls.static import static
+from accounts.views import registerView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +31,7 @@ urlpatterns = [
     path('login/', loginView, name='login'),
     path('logout/', logoutView, name='logout'),
     path('accounts/profile/', profileView, name='profile'),
+    path("register/", registerView, name="register"),
     ]
 
 if settings.DEBUG:

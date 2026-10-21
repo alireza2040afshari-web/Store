@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from accounts.models import ProfileModel
+from django.contrib.auth.forms import UserCreationForm
+from django.db import transaction
 
 
 def loginView(request):
@@ -42,6 +44,25 @@ def loginView(request):
         return render(request, "account/login.html", {})
 
 
+def registerView(request):
+    form = UserCreationForm(request.POST or None)
+
+    if form.is_valid():
+        with transaction.atomic():
+            user = form.save()
+
+            ProfileModel.objects.create(
+                user=user,
+                status=1,
+                credit=0
+            )
+
+            login(request, user)
+            return redirect("profile")
+
+    return render(request, "account/register.html", {"form": form})
+
+
 def logoutView(request):
     logout(request)
     return redirect("home")
@@ -49,9 +70,17 @@ def logoutView(request):
 
 @login_required
 def profileView(request):
-    profile = request.user.profile
+    profile, created = ProfileModel.objects.get_or_create(
+        user=request.user,
+        defaults={
+            "status": 1,
+            "credit": 0,
+        }
+    )
+
     context = {
-        "profile" : profile,
-        "date_join" : request.user.date_joined.strftime("%Y-%m-%d")
+        "profile": profile,
+        "date_join": request.user.date_joined.strftime("%Y-%m-%d")
     }
-    return render(request,'account/profile.html',context)
+
+    return render(request, "account/profile.html", context)

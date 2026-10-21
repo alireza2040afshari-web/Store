@@ -7,46 +7,53 @@
 <section class="profile-section">
     <div class="profile-card">
 
-        <h1>My Profile</h1>
+        <div class="profile-header">
+            {% if profile.profileImage %}
+                <img
+                    src="{{ profile.profileImage.url }}"
+                    alt="Profile Photo"
+                    class="profile-image"
+                >
+            {% else %}
+                <div class="profile-image-placeholder">
+                    {{ request.user.username|first|upper }}
+                </div>
+            {% endif %}
 
-        {% if profile.profileImage %}
-            <img
-                src="{{ profile.profileImage.url }}"
-                alt="Profile Photo"
-                class="profile-image"
-            >
-        {% else %}
-            <div class="profile-placeholder">No Photo</div>
-        {% endif %}
-
-        <div class="profile-info">
-            <p>
-                <strong>Username:</strong>
-                {{ request.user.username }}
-            </p>
-
-            <p>
-                <strong>Email:</strong>
-                {{ request.user.email|default:"Not provided" }}
-            </p>
-
-            <p>
-                <strong>Gender:</strong>
-                {{ profile.get_status_display }}
-            </p>
-
-            <p>
-                <strong>Account Created:</strong>
-                {{ date_join }}
-            </p>
-
-            <p>
-                <strong>Credit:</strong>
-                {{ profile.credit }}
-            </p>
+            <h1>{{ request.user.username }}</h1>
+            <p>Welcome to your account</p>
         </div>
 
-        <a href="{% url 'home' %}" class="profile-button">
+        <div class="profile-details">
+
+            <div class="profile-item">
+                <span>Username</span>
+                <strong>{{ request.user.username }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Email</span>
+                <strong>{{ request.user.email|default:"Not provided" }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Gender</span>
+                <strong>{{ profile.get_status_display }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Member Since</span>
+                <strong>{{ date_join }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Account Credit</span>
+                <strong>{{ profile.credit }}</strong>
+            </div>
+
+        </div>
+
+        <a href="{% url 'home' %}" class="profile-home-button">
             Back to Home
         </a>
 
