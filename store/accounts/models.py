@@ -30,7 +30,7 @@ class ProfileModel(models.Model):
     credit = models.IntegerField(default=0)
 
     class Meta:
-        verbose_name = "user"
+        verbose_name = "User Profile"
         db_table = "UserProfile"
         verbose_name_plural = "User Profiles"
 
