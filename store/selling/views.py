@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from .models import ProductModel , NewsModel
+from .models import ProductModel , NewsModel , CartModel
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -29,3 +30,9 @@ def detailView(request, product_id):
         "store/detail.html",
         {"product": product}
     )
+
+
+@login_required
+def cartView(request):
+    pass
+    
