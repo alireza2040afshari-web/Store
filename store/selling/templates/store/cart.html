@@ -1,32 +1,71 @@
 {% extends 'store/base.html' %}
 
-{% block title %}My Shopping Cart{% endblock %}
+{% block title %}Shopping Cart | Online Store{% endblock %}
 
 {% block content %}
-
 <section class="cart-section">
-    <h1>My Shopping Cart 🛒</h1>
+    <div class="cart-container">
 
-    {% if cart_items %}
-        <div class="cart-list">
-            {% for item in cart_items %}
-                <div class="cart-item">
-                    <div>
-                        <h3>{{ item.product.name }}</h3>
-                        <p>Quantity: {{ item.quantity }}</p>
-                    </div>
-
-                    <form method="POST"
-                          action="{% url 'remove_from_cart' item.id %}">
-                        {% csrf_token %}
-                        <button type="submit">Remove</button>
-                    </form>
-                </div>
-            {% endfor %}
+        <div class="cart-heading">
+            <div>
+                <h1>Shopping Cart</h1>
+                <p>Review the products you have selected.</p>
+            </div>
+            <span class="cart-count">
+                {{ cart_items|length }} item{{ cart_items|length|pluralize }}
+            </span>
         </div>
-    {% else %}
-        <p>Your shopping cart is empty.</p>
-    {% endif %}
-</section>
 
+        {% if cart_items %}
+            <div class="cart-list">
+                {% for item in cart_items %}
+                    <div class="cart-item">
+                        <div class="cart-product-info">
+                            {% if item.product.poster %}
+                                <img
+                                    src="{{ item.product.poster.url }}"
+                                    alt="{{ item.product.name }}"
+                                    class="cart-product-image"
+                                >
+                            {% else %}
+                                <div class="cart-product-placeholder">📦</div>
+                            {% endif %}
+
+                            <div class="cart-product-details">
+                                <h3>{{ item.product.name }}</h3>
+                                <p>Quantity: {{ item.quantity }}</p>
+                            </div>
+                        </div>
+
+                        <form method="POST"
+                              action="{% url 'remove_from_cart' item.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="cart-remove-button">
+                                Remove
+                            </button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="cart-actions">
+                <a href="{% url 'products' %}" class="cart-continue-button">
+                    Continue Shopping
+                </a>
+            </div>
+
+        {% else %}
+            <div class="cart-empty">
+                <div class="cart-empty-icon">🛒</div>
+                <h2>Your cart is empty</h2>
+                <p>You haven't added any products to your cart yet.</p>
+                <a href="{% url 'products' %}" class="cart-continue-button">
+                    Explore Products
+                </a>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
 {% endblock %}
+```

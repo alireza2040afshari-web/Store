@@ -34,7 +34,7 @@ urlpatterns = [
     path("register/", registerView, name="register"),
     path("cart/", cartView,name="cart"),
     path("cart/add/<int:product_id>/", addToCartView, name="add_to_cart"),
-    path("cart/remove/<int:product_id>/", removeFromCartView, name="remove_from_cart")
+    path("cart/remove/<int:item_id>/", removeFromCartView, name="remove_from_cart"),
     ]
 
 if settings.DEBUG:
