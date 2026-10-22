@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from selling.views import homeView, productList, detailView
+from selling.views import homeView, productList, detailView, cartView, addToCartView, removeFromCartView
 from accounts.views import logoutView, loginView, profileView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -32,6 +32,9 @@ urlpatterns = [
     path('logout/', logoutView, name='logout'),
     path('accounts/profile/', profileView, name='profile'),
     path("register/", registerView, name="register"),
+    path("cart/", cartView,name="cart"),
+    path("cart/add/<int:product_id>/", addToCartView, name="add_to_cart"),
+    path("cart/remove/<int:product_id>/", removeFromCartView, name="remove_from_cart")
     ]
 
 if settings.DEBUG:

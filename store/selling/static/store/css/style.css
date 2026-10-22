@@ -728,3 +728,19 @@ body.simple-theme .product p { color: #666; }
 .login-register a:hover {
     text-decoration: underline;
 }
+
+.add-to-cart-button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #247548;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.add-to-cart-button:hover {
+    background: #195b36;
+}

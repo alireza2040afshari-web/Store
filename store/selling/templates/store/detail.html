@@ -77,6 +77,12 @@
             <a href="{% url 'products' %}" class="btn ">
                 Back
             </a>
+            <form method="POST" action="{% url 'add_to_cart' product.id %}">
+            {% csrf_token %}
+             <button type="submit" class="add-to-cart-button">
+             Add to Cart
+             </button>
+             </form>
 
         </div>
 

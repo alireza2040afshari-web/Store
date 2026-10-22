@@ -1,0 +1,32 @@
+{% extends 'store/base.html' %}
+
+{% block title %}My Shopping Cart{% endblock %}
+
+{% block content %}
+
+<section class="cart-section">
+    <h1>My Shopping Cart 🛒</h1>
+
+    {% if cart_items %}
+        <div class="cart-list">
+            {% for item in cart_items %}
+                <div class="cart-item">
+                    <div>
+                        <h3>{{ item.product.name }}</h3>
+                        <p>Quantity: {{ item.quantity }}</p>
+                    </div>
+
+                    <form method="POST"
+                          action="{% url 'remove_from_cart' item.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Remove</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Your shopping cart is empty.</p>
+    {% endif %}
+</section>
+
+{% endblock %}
