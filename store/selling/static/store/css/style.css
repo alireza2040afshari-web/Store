@@ -981,3 +981,9 @@ body.simple-theme .product p { color: #666; }
     padding: 12px 20px;
     box-sizing: border-box;
 }
+
+
+.add-to-cart-button {
+    text-decoration: none;
+    display: inline-block;
+}

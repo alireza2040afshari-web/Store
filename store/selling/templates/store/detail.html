@@ -79,12 +79,18 @@
                     Back
                 </a>
 
-                <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                    {% csrf_token %}
-                    <button type="submit" class="add-to-cart-button">
+                {% if user.is_authenticated %}
+                    <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="add-to-cart-button">
+                            Add to Cart
+                        </button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="add-to-cart-button">
                         Add to Cart
-                    </button>
-                </form>
+                    </a>
+                {% endif %}
             </div>
 
 

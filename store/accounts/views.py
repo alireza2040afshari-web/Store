@@ -10,10 +10,7 @@ from django.db import transaction
 
 
 def loginView(request):
-
-    # POST
     if request.method == "POST":
-
         username = request.POST.get("username")
         password = request.POST.get("password")
 
@@ -26,22 +23,25 @@ def loginView(request):
         if user:
             login(request, user)
 
-            if request.GET.get("next"):
-                return HttpResponseRedirect(request.GET.get("next"))
-            else:
-                return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
+            next_url = request.POST.get("next") or request.GET.get("next")
 
-        else:
-            context = {
-                "username": username,
-                "errorMessage": "Not Found"
-            }
+            if next_url:
+                return HttpResponseRedirect(next_url)
 
-            return render(request, "account/login.html", context)
+            return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
 
-    # GET
-    else:
-        return render(request, "account/login.html", {})
+        context = {
+            "username": username,
+            "errorMessage": "Not Found"
+        }
+
+        return render(request, "account/login.html", context)
+
+    return render(
+        request,
+        "account/login.html",
+        {"next": request.GET.get("next", "")}
+    )
 
 
 def registerView(request):

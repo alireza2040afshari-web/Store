@@ -34,21 +34,20 @@ def detailView(request, product_id):
     )
 
 
-@login_required
+@login_required(login_url='/login/')
 @require_POST
 def addToCartView(request, product_id):
     product = get_object_or_404(ProductModel, id=product_id)
 
-    with transaction.atomic():
-        cart_item, created = CartModel.objects.get_or_create(
-            user=request.user,
-            product=product,
-            defaults={"quantity": 1}
-        )
+    cart_item, created = CartModel.objects.get_or_create(
+        user=request.user,
+        product=product,
+        defaults={"quantity": 1}
+    )
 
-        if not created:
-            cart_item.quantity += 1
-            cart_item.save(update_fields=["quantity"])
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save(update_fields=["quantity"])
 
     return redirect("cart")
 
@@ -65,18 +64,6 @@ def cartView(request):
 
     return render(request, "store/cart.html", context)
 
-
-@login_required
-def cartView(request):
-    cart_items = CartModel.objects.filter(
-        user=request.user
-    ).select_related("product")
-
-    context = {
-        "cart_items": cart_items,
-    }
-
-    return render(request, "store/cart.html", context)
 
 
 @login_required
