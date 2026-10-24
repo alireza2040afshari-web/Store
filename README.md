@@ -88,7 +88,7 @@ Follow these steps to run the project locally.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/alireza2040afshari-web/Store.git
+![Django Store Homepage](screenshots/homepage.png)
 ```
 
 ### 2. Navigate to the Project Directory
